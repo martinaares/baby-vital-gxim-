@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -32,6 +31,17 @@ const resources = {
       // Connection Status
       "connected": "Connected",
       "disconnected": "Disconnected",
+      
+      // Weekly Records
+      "weekly.records": "Weekly Records",
+      "current.week": "Current Week",
+      "no.records": "No records available for this week",
+      "download": "Download",
+      "share": "Share",
+      
+      // Baby Management
+      "no.babies": "No babies registered",
+      "select.baby": "Select Baby",
     }
   },
   es: {
@@ -63,6 +73,17 @@ const resources = {
       // Estado de Conexión
       "connected": "Conectado",
       "disconnected": "Desconectado",
+      
+      // Weekly Records
+      "weekly.records": "Registros Semanales",
+      "current.week": "Semana Actual",
+      "no.records": "No hay registros disponibles para esta semana",
+      "download": "Descargar",
+      "share": "Compartir",
+      
+      // Baby Management
+      "no.babies": "No hay bebés registrados",
+      "select.baby": "Seleccionar Bebé",
     }
   }
 };
