@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -23,7 +24,6 @@ const resources = {
       "language": "Language",
       "registered.babies": "Registered Babies",
       "add.baby": "Add Baby",
-      "no.babies": "No babies registered yet.",
       "bluetooth.devices": "Bluetooth Devices",
       "scan": "Scan",
       "no.devices": "No devices available.",
@@ -40,8 +40,8 @@ const resources = {
       "share": "Share",
       
       // Baby Management
-      "no.babies": "No babies registered",
-      "select.baby": "Select Baby",
+      "no.babies.registered": "No babies registered yet",
+      "select.baby": "Select Baby"
     }
   },
   es: {
@@ -65,7 +65,6 @@ const resources = {
       "language": "Idioma",
       "registered.babies": "Bebés Registrados",
       "add.baby": "Añadir Bebé",
-      "no.babies": "No hay bebés registrados aún.",
       "bluetooth.devices": "Dispositivos Bluetooth",
       "scan": "Escanear",
       "no.devices": "No hay dispositivos disponibles.",
@@ -82,8 +81,8 @@ const resources = {
       "share": "Compartir",
       
       // Baby Management
-      "no.babies": "No hay bebés registrados",
-      "select.baby": "Seleccionar Bebé",
+      "no.babies.registered": "No hay bebés registrados aún",
+      "select.baby": "Seleccionar Bebé"
     }
   }
 };
