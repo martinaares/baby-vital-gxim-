@@ -3,10 +3,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Settings } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import VitalCard from "../components/VitalCard";
 import BluetoothStatus from "../components/BluetoothStatus";
 
 const Index = () => {
+  const { t } = useTranslation();
   const [isConnected] = useState(false);
   const [vitals] = useState({
     heartRate: { value: 120, status: "normal" as const },
@@ -35,7 +37,7 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-semibold text-foreground"
           >
-            Baby Vital Signs Monitor
+            {t('app.title')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -10 }}
@@ -43,7 +45,7 @@ const Index = () => {
             transition={{ delay: 0.1 }}
             className="mt-2 text-secondary-foreground"
           >
-            Real-time monitoring of your baby's vital signs
+            {t('app.subtitle')}
           </motion.p>
         </header>
 
@@ -80,9 +82,7 @@ const Index = () => {
           className="mt-8 rounded-lg bg-secondary p-6 text-center"
         >
           <p className="text-secondary-foreground">
-            {isConnected
-              ? "Monitoring active. All vital signs are being recorded."
-              : "Please connect your monitoring device to begin tracking vital signs."}
+            {t(isConnected ? 'monitor.active' : 'monitor.inactive')}
           </p>
         </motion.div>
       </motion.div>

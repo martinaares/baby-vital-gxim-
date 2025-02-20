@@ -1,12 +1,15 @@
 
 import { motion } from "framer-motion";
 import { Bluetooth, BluetoothOff } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface BluetoothStatusProps {
   connected: boolean;
 }
 
 const BluetoothStatus = ({ connected }: BluetoothStatusProps) => {
+  const { t } = useTranslation();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -18,12 +21,12 @@ const BluetoothStatus = ({ connected }: BluetoothStatusProps) => {
       {connected ? (
         <>
           <Bluetooth className="h-4 w-4" />
-          <span className="text-sm font-medium">Connected</span>
+          <span className="text-sm font-medium">{t('connected')}</span>
         </>
       ) : (
         <>
           <BluetoothOff className="h-4 w-4" />
-          <span className="text-sm font-medium">Disconnected</span>
+          <span className="text-sm font-medium">{t('disconnected')}</span>
         </>
       )}
     </motion.div>
