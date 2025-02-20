@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 import VitalCard from "../components/VitalCard";
 import BluetoothStatus from "../components/BluetoothStatus";
 
@@ -21,7 +23,13 @@ const Index = () => {
         animate={{ opacity: 1 }}
         className="container mx-auto max-w-4xl"
       >
-        <header className="mb-8 text-center">
+        <header className="mb-8 text-center relative">
+          <Link 
+            to="/settings"
+            className="absolute right-0 top-0 rounded-full p-2 text-secondary-foreground hover:bg-secondary hover:text-foreground transition-colors"
+          >
+            <Settings className="h-6 w-6" />
+          </Link>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
