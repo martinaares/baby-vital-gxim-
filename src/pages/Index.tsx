@@ -1,12 +1,83 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import VitalCard from "../components/VitalCard";
+import BluetoothStatus from "../components/BluetoothStatus";
 
 const Index = () => {
+  const [isConnected] = useState(false);
+  const [vitals] = useState({
+    heartRate: { value: 120, status: "normal" as const },
+    temperature: { value: 37.2, status: "normal" as const },
+    respiratoryRate: { value: 30, status: "normal" as const },
+  });
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background p-6">
+      <BluetoothStatus connected={isConnected} />
+      
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container mx-auto max-w-4xl"
+      >
+        <header className="mb-8 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl font-semibold text-foreground"
+          >
+            Baby Vital Signs Monitor
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mt-2 text-secondary-foreground"
+          >
+            Real-time monitoring of your baby's vital signs
+          </motion.p>
+        </header>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="grid gap-6 md:grid-cols-3"
+        >
+          <VitalCard
+            type="heart"
+            value={vitals.heartRate.value}
+            unit="bpm"
+            status={vitals.heartRate.status}
+          />
+          <VitalCard
+            type="temp"
+            value={vitals.temperature.value}
+            unit="°C"
+            status={vitals.temperature.status}
+          />
+          <VitalCard
+            type="resp"
+            value={vitals.respiratoryRate.value}
+            unit="br/min"
+            status={vitals.respiratoryRate.status}
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 rounded-lg bg-secondary p-6 text-center"
+        >
+          <p className="text-secondary-foreground">
+            {isConnected
+              ? "Monitoring active. All vital signs are being recorded."
+              : "Please connect your monitoring device to begin tracking vital signs."}
+          </p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
