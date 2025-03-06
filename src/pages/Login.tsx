@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
@@ -7,6 +6,7 @@ import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -16,55 +16,32 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { isAuthenticated, login } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // En una implementación real, aquí se conectaría con Supabase
-      // const { data, error } = await supabase.auth.signInWithPassword({
-      //   email,
-      //   password,
-      // });
-      
-      // Simulación de login
-      setTimeout(() => {
-        // Simular validación
-        if (email === "admin@example.com" && password === "password") {
-          localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("userRole", "admin");
-          localStorage.setItem("userEmail", email);
-          toast({
-            title: t("login.success"),
-            description: t("login.welcome"),
-          });
-          navigate("/");
-        } else if (email && password) {
-          localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("userRole", "user");
-          localStorage.setItem("userEmail", email);
-          toast({
-            title: t("login.success"),
-            description: t("login.welcome"),
-          });
-          navigate("/");
-        } else {
-          toast({
-            title: t("login.error"),
-            description: t("login.invalid"),
-            variant: "destructive",
-          });
-        }
-        setIsLoading(false);
-      }, 1000);
-
+      await login(email, password);
+      toast({
+        title: t("login.success"),
+        description: t("login.welcome"),
+      });
+      navigate("/");
     } catch (error) {
       toast({
         title: t("login.error"),
-        description: String(error),
+        description: t("login.invalid"),
         variant: "destructive",
       });
+    } finally {
       setIsLoading(false);
     }
   };

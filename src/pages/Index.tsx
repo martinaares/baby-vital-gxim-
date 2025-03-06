@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -27,31 +26,28 @@ const Index = () => {
   // Datos de ejemplo para las tarjetas de signos vitales
   const vitalSigns = [
     {
-      id: "heart-rate",
-      title: t("heart.rate"),
+      name: t("heart.rate"),
       value: 128,
       unit: "bpm",
-      status: "normal",
+      status: "normal" as const,
       range: "110-160",
-      icon: "heart",
+      icon: "heart" as const
     },
     {
-      id: "temperature",
-      title: t("temperature"),
+      name: t("temperature"),
       value: 36.7,
       unit: "°C",
-      status: "normal",
+      status: "normal" as const,
       range: "36.5-37.5",
-      icon: "thermometer",
+      icon: "thermometer" as const
     },
     {
-      id: "respiratory-rate",
-      title: t("respiratory.rate"),
+      name: t("respiratory.rate"),
       value: 30,
       unit: "rpm",
-      status: "normal",
+      status: "normal" as const,
       range: "20-40",
-      icon: "activity",
+      icon: "activity" as const
     },
   ];
 
@@ -101,15 +97,15 @@ const Index = () => {
 
         {/* Tarjetas de Signos Vitales */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {vitalSigns.map((sign) => (
+          {vitalSigns.map((sign, index) => (
             <VitalCard
-              key={sign.id}
-              title={sign.title}
+              key={index}
+              name={sign.name}
               value={sign.value}
               unit={sign.unit}
-              status={sign.status as "normal" | "warning" | "alert"}
+              status={sign.status}
               range={sign.range}
-              icon={sign.icon as "heart" | "thermometer" | "activity"}
+              icon={sign.icon}
             />
           ))}
         </div>
