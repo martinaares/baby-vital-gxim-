@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -26,28 +27,28 @@ const Index = () => {
   // Datos de ejemplo para las tarjetas de signos vitales
   const vitalSigns = [
     {
+      type: "heart" as const,
       name: t("heart.rate"),
       value: 128,
       unit: "bpm",
       status: "normal" as const,
-      range: "110-160",
-      icon: "heart" as const
+      range: "110-160"
     },
     {
+      type: "temp" as const,
       name: t("temperature"),
       value: 36.7,
       unit: "°C",
       status: "normal" as const,
-      range: "36.5-37.5",
-      icon: "thermometer" as const
+      range: "36.5-37.5"
     },
     {
+      type: "resp" as const,
       name: t("respiratory.rate"),
       value: 30,
       unit: "rpm",
       status: "normal" as const,
-      range: "20-40",
-      icon: "activity" as const
+      range: "20-40"
     },
   ];
 
@@ -100,12 +101,11 @@ const Index = () => {
           {vitalSigns.map((sign, index) => (
             <VitalCard
               key={index}
+              type={sign.type}
               name={sign.name}
               value={sign.value}
               unit={sign.unit}
               status={sign.status}
-              range={sign.range}
-              icon={sign.icon}
             />
           ))}
         </div>

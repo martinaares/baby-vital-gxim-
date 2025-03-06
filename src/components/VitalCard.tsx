@@ -7,9 +7,10 @@ interface VitalCardProps {
   value: number;
   unit: string;
   status: "normal" | "warning" | "alert";
+  name: string; // Added name property to the interface
 }
 
-const VitalCard = ({ type, value, unit, status }: VitalCardProps) => {
+const VitalCard = ({ type, value, unit, status, name }: VitalCardProps) => {
   const icons = {
     heart: Heart,
     temp: Thermometer,
@@ -46,9 +47,7 @@ const VitalCard = ({ type, value, unit, status }: VitalCardProps) => {
           <span className="ml-1 text-sm">{unit}</span>
         </div>
         <p className="mt-2 text-sm opacity-90">
-          {type === "heart" && "Heart Rate"}
-          {type === "temp" && "Temperature"}
-          {type === "resp" && "Respiratory Rate"}
+          {name}
         </p>
       </div>
     </motion.div>
