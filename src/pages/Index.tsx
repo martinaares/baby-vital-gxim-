@@ -1,114 +1,119 @@
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Settings, LineChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { Settings, BarChart } from "lucide-react";
 import VitalCard from "../components/VitalCard";
 import BluetoothStatus from "../components/BluetoothStatus";
 import BabySelector from "../components/BabySelector";
-
-const MOCK_BABIES = [
-  { id: "1", name: "Lucas", birthDate: "2023-01-15" },
-  { id: "2", name: "Emma", birthDate: "2023-03-20" },
-];
+import SleepPatterns from "../components/SleepPatterns";
+import UserDropdown from "../components/UserDropdown";
 
 const Index = () => {
   const { t } = useTranslation();
   const [isConnected] = useState(false);
-  const [activeBaby, setActiveBaby] = useState(MOCK_BABIES[0]);
-  const [vitals] = useState({
-    heartRate: { value: 120, status: "normal" as const },
-    temperature: { value: 37.2, status: "normal" as const },
-    respiratoryRate: { value: 30, status: "normal" as const },
-  });
+
+  // Datos de ejemplo para las tarjetas de signos vitales
+  const vitalSigns = [
+    {
+      id: "heart-rate",
+      title: t("heart.rate"),
+      value: "128",
+      unit: "bpm",
+      status: "normal",
+      range: "110-160",
+      icon: "heart",
+    },
+    {
+      id: "temperature",
+      title: t("temperature"),
+      value: "36.7",
+      unit: "°C",
+      status: "normal",
+      range: "36.5-37.5",
+      icon: "thermometer",
+    },
+    {
+      id: "respiratory-rate",
+      title: t("respiratory.rate"),
+      value: "30",
+      unit: "rpm",
+      status: "normal",
+      range: "20-40",
+      icon: "activity",
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-4 md:p-6">
       <BluetoothStatus connected={isConnected} />
       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="container mx-auto max-w-4xl"
+        className="container mx-auto max-w-5xl"
       >
-        <header className="mb-8 text-center relative">
-          <div className="absolute right-0 top-0 flex items-center gap-4">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+            {t("app.title")}
+          </h1>
+          <div className="flex items-center space-x-4">
             <Link
               to="/weekly-records"
-              className="rounded-full p-2 text-secondary-foreground hover:bg-secondary hover:text-foreground transition-colors"
+              className="hidden md:flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
             >
-              <LineChart className="h-6 w-6" />
+              <BarChart className="h-5 w-5" />
+              <span>{t("weekly.records")}</span>
             </Link>
-            <Link 
+            <Link
               to="/settings"
-              className="rounded-full p-2 text-secondary-foreground hover:bg-secondary hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Settings className="h-6 w-6" />
+              <Settings className="h-5 w-5" />
             </Link>
+            <UserDropdown />
           </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center gap-2"
-          >
-            <h1 className="text-3xl font-semibold text-foreground">
-              {t('app.title')}
-            </h1>
-            <BabySelector
-              babies={MOCK_BABIES}
-              activeBaby={activeBaby}
-              onBabyChange={setActiveBaby}
+        {/* Selector de Bebé */}
+        <div className="mb-6">
+          <BabySelector />
+        </div>
+        
+        <p className="text-secondary-foreground mb-6">
+          {isConnected ? t("monitor.active") : t("monitor.inactive")}
+        </p>
+
+        {/* Tarjetas de Signos Vitales */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {vitalSigns.map((sign) => (
+            <VitalCard
+              key={sign.id}
+              title={sign.title}
+              value={sign.value}
+              unit={sign.unit}
+              status={sign.status as "normal" | "warning" | "alert"}
+              range={sign.range}
+              icon={sign.icon as "heart" | "thermometer" | "activity"}
             />
-          </motion.div>
+          ))}
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mt-2 text-secondary-foreground"
+        {/* Sección de Patrones de Sueño */}
+        <div className="mb-8">
+          <SleepPatterns />
+        </div>
+        
+        {/* Botón de Records para móviles */}
+        <div className="md:hidden fixed bottom-4 right-4">
+          <Link
+            to="/weekly-records"
+            className="bg-primary text-primary-foreground p-3 rounded-full shadow-lg flex items-center justify-center"
           >
-            {t('app.subtitle')}
-          </motion.p>
-        </header>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="grid gap-6 md:grid-cols-3"
-        >
-          <VitalCard
-            type="heart"
-            value={vitals.heartRate.value}
-            unit="bpm"
-            status={vitals.heartRate.status}
-          />
-          <VitalCard
-            type="temp"
-            value={vitals.temperature.value}
-            unit="°C"
-            status={vitals.temperature.status}
-          />
-          <VitalCard
-            type="resp"
-            value={vitals.respiratoryRate.value}
-            unit="br/min"
-            status={vitals.respiratoryRate.status}
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-8 rounded-lg bg-secondary p-6 text-center"
-        >
-          <p className="text-secondary-foreground">
-            {t(isConnected ? 'monitor.active' : 'monitor.inactive')}
-          </p>
-        </motion.div>
+            <BarChart className="h-6 w-6" />
+          </Link>
+        </div>
       </motion.div>
     </div>
   );
