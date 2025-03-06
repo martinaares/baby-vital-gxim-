@@ -9,17 +9,27 @@ import BluetoothStatus from "../components/BluetoothStatus";
 import BabySelector from "../components/BabySelector";
 import SleepPatterns from "../components/SleepPatterns";
 import UserDropdown from "../components/UserDropdown";
+import { mockBabies, type Baby } from "../utils/mockData";
+import { useAuth } from "../hooks/useAuth";
+import { Navigate } from "react-router-dom";
 
 const Index = () => {
   const { t } = useTranslation();
   const [isConnected] = useState(false);
+  const [activeBaby, setActiveBaby] = useState<Baby>(mockBabies[0]);
+  const { isAuthenticated } = useAuth();
+
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   // Datos de ejemplo para las tarjetas de signos vitales
   const vitalSigns = [
     {
       id: "heart-rate",
       title: t("heart.rate"),
-      value: "128",
+      value: 128,
       unit: "bpm",
       status: "normal",
       range: "110-160",
@@ -28,7 +38,7 @@ const Index = () => {
     {
       id: "temperature",
       title: t("temperature"),
-      value: "36.7",
+      value: 36.7,
       unit: "°C",
       status: "normal",
       range: "36.5-37.5",
@@ -37,7 +47,7 @@ const Index = () => {
     {
       id: "respiratory-rate",
       title: t("respiratory.rate"),
-      value: "30",
+      value: 30,
       unit: "rpm",
       status: "normal",
       range: "20-40",
@@ -78,7 +88,11 @@ const Index = () => {
 
         {/* Selector de Bebé */}
         <div className="mb-6">
-          <BabySelector />
+          <BabySelector
+            babies={mockBabies}
+            activeBaby={activeBaby}
+            onBabyChange={setActiveBaby}
+          />
         </div>
         
         <p className="text-secondary-foreground mb-6">

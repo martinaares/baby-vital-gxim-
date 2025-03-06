@@ -7,9 +7,7 @@ type PrivateRouteProps = {
 };
 
 const PrivateRoute = ({ adminOnly = false }: PrivateRouteProps) => {
-  // En una implementación provisional, usamos localStorage
-  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
-  const userRole = localStorage.getItem("userRole");
+  const { isAuthenticated, isAdmin } = useAuth();
   
   // Verificar si el usuario está autenticado
   if (!isAuthenticated) {
@@ -17,7 +15,7 @@ const PrivateRoute = ({ adminOnly = false }: PrivateRouteProps) => {
   }
   
   // Verificar si la ruta es solo para administradores
-  if (adminOnly && userRole !== "admin") {
+  if (adminOnly && !isAdmin()) {
     return <Navigate to="/" replace />;
   }
   

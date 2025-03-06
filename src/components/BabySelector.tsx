@@ -3,16 +3,11 @@ import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import type { Baby } from "../utils/mockData";
 
-interface Baby {
-  id: string;
-  name: string;
-  birthDate: string;
-}
-
-interface BabySelectorProps {
+export interface BabySelectorProps {
   babies: Baby[];
-  activeBaby: Baby | null;
+  activeBaby: Baby;
   onBabyChange: (baby: Baby) => void;
 }
 
@@ -20,10 +15,10 @@ const BabySelector = ({ babies, activeBaby, onBabyChange }: BabySelectorProps) =
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!activeBaby) {
+  if (babies.length === 0) {
     return (
       <div className="text-secondary-foreground text-sm">
-        {t('no.babies')}
+        {t('no.babies.registered')}
       </div>
     );
   }
