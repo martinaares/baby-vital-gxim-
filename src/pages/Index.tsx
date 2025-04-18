@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Settings, BarChart } from "lucide-react";
+import { Settings, BarChart, Heart } from "lucide-react";
 import VitalCard from "../components/VitalCard";
 import BluetoothStatus from "../components/BluetoothStatus";
 import BabySelector from "../components/BabySelector";
@@ -59,7 +59,8 @@ const Index = () => {
         className="container mx-auto max-w-5xl"
       >
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center gap-2">
+            <Heart className="h-6 w-6 text-primary" />
             Monitor
           </h1>
           <div className="flex items-center space-x-4">
@@ -88,20 +89,26 @@ const Index = () => {
           />
         </div>
         
-        <p className="text-secondary-foreground mb-6">
+        <p className="text-secondary-foreground mb-6 glass-card inline-block px-4 py-2 rounded-full text-sm">
           {isConnected ? t("monitor.active") : t("monitor.inactive")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {vitalSigns.map((sign, index) => (
-            <VitalCard
+            <motion.div
               key={index}
-              type={sign.type}
-              name={sign.name}
-              value={sign.value}
-              unit={sign.unit}
-              status={sign.status}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <VitalCard
+                type={sign.type}
+                name={sign.name}
+                value={sign.value}
+                unit={sign.unit}
+                status={sign.status}
+              />
+            </motion.div>
           ))}
         </div>
 
@@ -118,7 +125,7 @@ const Index = () => {
           </Link>
         </div>
 
-        <div className="mt-8 rounded-lg border bg-card/50 backdrop-blur-sm p-4">
+        <div className="mt-8 glass-card rounded-lg p-4">
           <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
             <p className="text-sm">Espacio reservado para anuncios</p>
           </div>

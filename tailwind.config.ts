@@ -26,23 +26,23 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#4DABF7",
+          DEFAULT: "#82B1FF",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#E9ECEF",
+          DEFAULT: "#FFE0E9",
           foreground: "#343A40",
         },
         alert: {
-          DEFAULT: "#FF6B6B",
+          DEFAULT: "#FF9494",
           foreground: "#FFFFFF",
         },
         success: {
-          DEFAULT: "#51CF66",
+          DEFAULT: "#96DEB3",
           foreground: "#FFFFFF",
         },
         warning: {
-          DEFAULT: "#FFD43B",
+          DEFAULT: "#FFE5B4",
           foreground: "#212529",
         },
       },
