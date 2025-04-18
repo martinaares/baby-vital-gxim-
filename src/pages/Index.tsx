@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -25,7 +26,7 @@ const Index = () => {
   const vitalSigns = [
     {
       type: "heart" as const,
-      name: t("heart.rate"),
+      name: t("baby.state"),
       value: 128,
       unit: "bpm",
       status: "normal" as const,
@@ -33,7 +34,7 @@ const Index = () => {
     },
     {
       type: "temp" as const,
-      name: t("temperature"),
+      name: t("baby.temperature"),
       value: 36.7,
       unit: "°C",
       status: "normal" as const,
@@ -41,7 +42,7 @@ const Index = () => {
     },
     {
       type: "resp" as const,
-      name: t("respiratory.rate"),
+      name: t("baby.breathing"),
       value: 30,
       unit: "rpm",
       status: "normal" as const,
@@ -61,7 +62,7 @@ const Index = () => {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center gap-2">
             <Heart className="h-6 w-6 text-primary" />
-            Monitor
+            Monitor Baby Vital
           </h1>
           <div className="flex items-center space-x-4">
             <Link
@@ -126,8 +127,18 @@ const Index = () => {
         </div>
 
         <div className="mt-8 glass-card rounded-lg p-4">
-          <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
-            <p className="text-sm">Espacio reservado para anuncios</p>
+          <div className="bg-secondary/30 rounded-md p-4 text-center">
+            <div className="flex items-center justify-center gap-4">
+              <img 
+                src="/placeholder.svg" 
+                alt="Ejemplo de publicidad" 
+                className="w-24 h-24 object-cover rounded"
+              />
+              <div className="text-left">
+                <p className="font-medium text-secondary-foreground">Publicidad Infantil (ejemplo)</p>
+                <p className="text-sm text-muted-foreground">Productos y servicios para bebés</p>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
