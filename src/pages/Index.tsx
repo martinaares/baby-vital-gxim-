@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -19,12 +18,10 @@ const Index = () => {
   const [activeBaby, setActiveBaby] = useState<Baby>(mockBabies[0]);
   const { isAuthenticated } = useAuth();
 
-  // Redirect to login if not authenticated
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
 
-  // Datos de ejemplo para las tarjetas de signos vitales
   const vitalSigns = [
     {
       type: "heart" as const,
@@ -63,7 +60,7 @@ const Index = () => {
       >
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-            {t("app.title")}
+            Monitor
           </h1>
           <div className="flex items-center space-x-4">
             <Link
@@ -71,7 +68,7 @@ const Index = () => {
               className="hidden md:flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <BarChart className="h-5 w-5" />
-              <span>{t("weekly.records")}</span>
+              <span>{t('weekly.records')}</span>
             </Link>
             <Link
               to="/settings"
@@ -83,7 +80,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Selector de Bebé */}
         <div className="mb-6">
           <BabySelector
             babies={mockBabies}
@@ -96,7 +92,6 @@ const Index = () => {
           {isConnected ? t("monitor.active") : t("monitor.inactive")}
         </p>
 
-        {/* Tarjetas de Signos Vitales */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {vitalSigns.map((sign, index) => (
             <VitalCard
@@ -110,12 +105,10 @@ const Index = () => {
           ))}
         </div>
 
-        {/* Sección de Patrones de Sueño */}
         <div className="mb-8">
           <SleepPatterns />
         </div>
         
-        {/* Botón de Records para móviles */}
         <div className="md:hidden fixed bottom-4 right-4">
           <Link
             to="/weekly-records"
@@ -123,6 +116,12 @@ const Index = () => {
           >
             <BarChart className="h-6 w-6" />
           </Link>
+        </div>
+
+        <div className="mt-8 rounded-lg border bg-card/50 backdrop-blur-sm p-4">
+          <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
+            <p className="text-sm">Espacio reservado para anuncios</p>
+          </div>
         </div>
       </motion.div>
     </div>

@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Globe, Baby } from "lucide-react";
+import { ArrowLeft, Globe, Baby, Hospital, UserCog } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BluetoothStatus from "../components/BluetoothStatus";
@@ -9,6 +9,9 @@ import BluetoothStatus from "../components/BluetoothStatus";
 const Settings = () => {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
+  const [healthCenter, setHealthCenter] = useState("");
+  const [pediatrician, setPediatrician] = useState("");
+  const [allowAccess, setAllowAccess] = useState(false);
 
   const handleLanguageChange = (newLang: string) => {
     setLanguage(newLang);
@@ -40,7 +43,7 @@ const Settings = () => {
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-lg border bg-card p-6"
+            className="rounded-lg border bg-card/50 backdrop-blur-sm p-6"
           >
             <div className="mb-4 flex items-center">
               <Globe className="mr-2 h-5 w-5" />
@@ -56,48 +59,62 @@ const Settings = () => {
             </select>
           </motion.section>
 
-          {/* Sección de Bebés */}
+          {/* Medical Information Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="rounded-lg border bg-card p-6"
+            className="rounded-lg border bg-card/50 backdrop-blur-sm p-6"
           >
-            <div className="mb-4 flex items-center justify-between">
-              <div className="flex items-center">
-                <Baby className="mr-2 h-5 w-5" />
-                <h2 className="text-xl font-semibold">{t('registered.babies')}</h2>
-              </div>
-              <Link
-                to="/babies/new"
-                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                {t('add.baby')}
-              </Link>
+            <div className="mb-4 flex items-center">
+              <Hospital className="mr-2 h-5 w-5" />
+              <h2 className="text-xl font-semibold">Información Médica</h2>
             </div>
-            <div className="text-secondary-foreground">
-              {t('no.babies')}
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Centro de Salud</label>
+                <input
+                  type="text"
+                  value={healthCenter}
+                  onChange={(e) => setHealthCenter(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2"
+                  placeholder="Nombre del centro de salud"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Pediatra</label>
+                <input
+                  type="text"
+                  value={pediatrician}
+                  onChange={(e) => setPediatrician(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2"
+                  placeholder="Nombre del pediatra"
+                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="allowAccess"
+                  checked={allowAccess}
+                  onChange={(e) => setAllowAccess(e.target.checked)}
+                  className="rounded border-gray-300"
+                />
+                <label htmlFor="allowAccess" className="text-sm">
+                  Permitir acceso de solo lectura al pediatra
+                </label>
+              </div>
             </div>
           </motion.section>
 
-          {/* Conexión Bluetooth */}
+          {/* Advertisement Space */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="rounded-lg border bg-card p-6"
+            className="rounded-lg border bg-card/50 backdrop-blur-sm p-4"
           >
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">{t('bluetooth.devices')}</h2>
-              <button
-                className="rounded-md bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80"
-                onClick={() => console.log("Escanear dispositivos")}
-              >
-                {t('scan')}
-              </button>
-            </div>
-            <div className="text-secondary-foreground">
-              {t('no.devices')}
+            <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
+              <p className="text-sm">Espacio reservado para anuncios</p>
             </div>
           </motion.section>
         </div>
