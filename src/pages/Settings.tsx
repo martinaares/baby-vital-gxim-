@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Globe, Baby, Hospital, UserCog } from "lucide-react";
+import { ArrowLeft, Globe, Hospital } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BluetoothStatus from "../components/BluetoothStatus";
+import UserProfile from "../components/UserProfile";
 
 const Settings = () => {
   const { t, i18n } = useTranslation();
@@ -39,11 +39,12 @@ const Settings = () => {
         </header>
 
         <div className="space-y-6">
-          {/* Sección de Idioma */}
+          <UserProfile />
+
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-lg border bg-card/50 backdrop-blur-sm p-6"
+            className="glass-card p-6 rounded-lg"
           >
             <div className="mb-4 flex items-center">
               <Globe className="mr-2 h-5 w-5" />
@@ -59,12 +60,11 @@ const Settings = () => {
             </select>
           </motion.section>
 
-          {/* Medical Information Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="rounded-lg border bg-card/50 backdrop-blur-sm p-6"
+            className="glass-card p-6 rounded-lg"
           >
             <div className="mb-4 flex items-center">
               <Hospital className="mr-2 h-5 w-5" />
@@ -103,18 +103,6 @@ const Settings = () => {
                   Permitir acceso de solo lectura al pediatra
                 </label>
               </div>
-            </div>
-          </motion.section>
-
-          {/* Advertisement Space */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="rounded-lg border bg-card/50 backdrop-blur-sm p-4"
-          >
-            <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
-              <p className="text-sm">Espacio reservado para anuncios</p>
             </div>
           </motion.section>
         </div>

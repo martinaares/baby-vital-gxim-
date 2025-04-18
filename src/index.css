@@ -35,6 +35,6 @@
   }
   
   .baby-gradient {
-    @apply bg-gradient 0%, #fef9d7 100%;
+    @apply bg-gradient-to-r from-primary to-secondary;
   }
 }
