@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, User, Heart, TeddyBear } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
@@ -64,12 +64,21 @@ const Register = () => {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">{t("app.title")}</h1>
-          <p className="text-secondary-foreground">{t("register.subtitle")}</p>
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex justify-center items-center gap-2 mb-4"
+          >
+            <TeddyBear className="w-10 h-10 text-primary" />
+            <Heart className="w-6 h-6 text-alert" />
+          </motion.div>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Monitor Baby Vital</h1>
+          <p className="text-secondary-foreground">La app para cuidar a tu bebé con amor</p>
         </div>
 
-        <div className="bg-card rounded-lg shadow-lg p-6 border">
-          <h2 className="text-xl font-semibold mb-6 text-center">{t("register.title")}</h2>
+        <div className="glass-card rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-6 text-center">Crea tu cuenta</h2>
           
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -162,6 +171,12 @@ const Register = () => {
                 {t("register.login")}
               </Link>
             </p>
+          </div>
+        </div>
+
+        <div className="mt-8 glass-card rounded-lg p-4">
+          <div className="bg-secondary/30 rounded-md p-4 text-center text-secondary-foreground">
+            <p className="text-sm">Espacio reservado para anuncios</p>
           </div>
         </div>
       </motion.div>
