@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { Eye, EyeOff, Lock, Mail, User, Heart, TeddyBear } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, User, Heart, Baby } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
@@ -70,7 +70,7 @@ const Register = () => {
             transition={{ duration: 0.3 }}
             className="flex justify-center items-center gap-2 mb-4"
           >
-            <TeddyBear className="w-10 h-10 text-primary" />
+            <Baby className="w-10 h-10 text-primary" />
             <Heart className="w-6 h-6 text-alert" />
           </motion.div>
           <h1 className="text-3xl font-bold text-foreground mb-2">Monitor Baby Vital</h1>
