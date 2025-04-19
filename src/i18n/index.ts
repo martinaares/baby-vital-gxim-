@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -123,7 +122,16 @@ const resources = {
       "birth.date": "Birth date",
       "weight": "Weight",
       "height": "Height",
-      "device": "Device"
+      "device": "Device",
+
+      // Premium Features
+      "premium.title": "Premium Version",
+      "premium.description": "Enjoy Monitor Baby Vital without ads",
+      "premium.price": "Subscribe for $2.99/month",
+      "premium.button": "Subscribe now",
+      "premium.success": "Thanks for going Premium!",
+      "premium.success.detail": "You now enjoy an ad-free experience",
+      "premium.benefits": "Remove all ads",
     }
   },
   es: {
@@ -246,7 +254,16 @@ const resources = {
       "birth.date": "Fecha de nacimiento",
       "weight": "Peso",
       "height": "Altura",
-      "device": "Dispositivo"
+      "device": "Dispositivo",
+
+      // Premium Features
+      "premium.title": "Versión Premium",
+      "premium.description": "Disfruta de Monitor Baby Vital sin anuncios",
+      "premium.price": "Suscribirme por 2,99 €/mes",
+      "premium.button": "Suscribirme",
+      "premium.success": "¡Gracias por hacerte Premium!",
+      "premium.success.detail": "Ahora disfrutas de una experiencia sin anuncios",
+      "premium.benefits": "Eliminar toda la publicidad",
     }
   }
 };

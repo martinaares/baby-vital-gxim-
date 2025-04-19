@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Globe, Hospital } from "lucide-react";
@@ -5,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BluetoothStatus from "../components/BluetoothStatus";
 import UserProfile from "../components/UserProfile";
+import PremiumSection from "../components/PremiumSection";
 
 const Settings = () => {
   const { t, i18n } = useTranslation();
@@ -40,7 +42,9 @@ const Settings = () => {
 
         <div className="space-y-6">
           <UserProfile />
+          <PremiumSection />
 
+          {/* Language Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,6 +64,7 @@ const Settings = () => {
             </select>
           </motion.section>
 
+          {/* Medical Information Section */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,27 +73,27 @@ const Settings = () => {
           >
             <div className="mb-4 flex items-center">
               <Hospital className="mr-2 h-5 w-5" />
-              <h2 className="text-xl font-semibold">Información Médica</h2>
+              <h2 className="text-xl font-semibold">{t('medical.info')}</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Centro de Salud</label>
+                <label className="block text-sm font-medium mb-1">{t('health.center')}</label>
                 <input
                   type="text"
                   value={healthCenter}
                   onChange={(e) => setHealthCenter(e.target.value)}
                   className="w-full rounded-md border border-input bg-background px-3 py-2"
-                  placeholder="Nombre del centro de salud"
+                  placeholder={t('health.center.placeholder')}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Pediatra</label>
+                <label className="block text-sm font-medium mb-1">{t('pediatrician')}</label>
                 <input
                   type="text"
                   value={pediatrician}
                   onChange={(e) => setPediatrician(e.target.value)}
                   className="w-full rounded-md border border-input bg-background px-3 py-2"
-                  placeholder="Nombre del pediatra"
+                  placeholder={t('pediatrician.placeholder')}
                 />
               </div>
               <div className="flex items-center space-x-2">
@@ -100,7 +105,7 @@ const Settings = () => {
                   className="rounded border-gray-300"
                 />
                 <label htmlFor="allowAccess" className="text-sm">
-                  Permitir acceso de solo lectura al pediatra
+                  {t('allow.access')}
                 </label>
               </div>
             </div>
