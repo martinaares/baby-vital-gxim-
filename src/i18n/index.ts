@@ -212,6 +212,19 @@ const resources = {
       "sleep.light": "Sueño Ligero",
       "sleep.awake": "Despierto",
       "sleep.analysis": "Análisis de Sueño",
+      
+      // User Profile
+      "personal.info": "Información Personal",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "registered.babies": "Bebés registrados",
+      "member.since": "Miembro desde",
+      "health.center": "Centro de salud",
+      "account.type": "Tipo de cuenta",
+      "edit.profile": "Editar perfil",
+      "not.specified": "No especificado",
+      "newborn": "Recién nacido",
+      "months": "meses",
     }
   }
 };

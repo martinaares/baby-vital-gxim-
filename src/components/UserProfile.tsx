@@ -1,10 +1,11 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Baby, Mail, User, Hospital, Calendar, Plus, Edit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { mockBabies } from "@/utils/mockData";
+import { useAuth } from "@/hooks/useAuth";
+import { Badge } from "@/components/ui/badge";
 
 interface BabyProfile {
   id: string;
@@ -18,13 +19,15 @@ interface BabyProfile {
 
 const UserProfile = () => {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [babies, setBabies] = useState<BabyProfile[]>(mockBabies);
+  const [isEditing, setIsEditing] = useState(false);
   
   const calculateAge = (birthDate: string) => {
     const birth = new Date(birthDate);
     const today = new Date();
     const months = (today.getFullYear() - birth.getFullYear()) * 12 + today.getMonth() - birth.getMonth();
-    return months < 1 ? t('newborn') : `${months} ${t('months')}`;
+    return months < 1 ? "Recién nacido" : `${months} meses`;
   };
 
   return (
@@ -34,36 +37,66 @@ const UserProfile = () => {
         animate={{ opacity: 1, y: 0 }}
         className="glass-card p-6 rounded-lg"
       >
-        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <User className="w-5 h-5" />
-          {t('personal.info')}
-        </h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
+            <User className="w-5 h-5" />
+            Información Personal
+          </h2>
+          <Button 
+            variant="ghost" 
+            size="sm"
+            onClick={() => setIsEditing(!isEditing)}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            <Edit2 className="w-4 h-4 mr-2" />
+            Editar
+          </Button>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('name')}</p>
-            <p className="font-medium">Juan Pérez</p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('email')}</p>
+            <p className="text-sm text-muted-foreground">Nombre completo</p>
             <p className="font-medium flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              juan@ejemplo.com
+              {user?.email?.split('@')[0] || "Usuario"}
             </p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('registered.babies')}</p>
+            <p className="text-sm text-muted-foreground">Correo electrónico</p>
+            <p className="font-medium flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              {user?.email || "correo@ejemplo.com"}
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Bebés registrados</p>
             <p className="font-medium flex items-center gap-2">
               <Baby className="w-4 h-4" />
               {babies.length}
             </p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('member.since')}</p>
+            <p className="text-sm text-muted-foreground">Miembro desde</p>
             <p className="font-medium flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              {new Date().toLocaleDateString()}
+              {new Date().toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
             </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Centro de salud</p>
+            <p className="font-medium flex items-center gap-2">
+              <Hospital className="w-4 h-4" />
+              No especificado
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Tipo de cuenta</p>
+            <Badge variant="outline" className="bg-primary/10">
+              {user?.role === 'admin' ? 'Administrador' : 'Usuario'}
+            </Badge>
           </div>
         </div>
       </motion.section>
