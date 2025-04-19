@@ -1,16 +1,18 @@
-
 import { motion } from "framer-motion";
 import { Heart, Thermometer, Wind } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface VitalCardProps {
   type: "heart" | "temp" | "resp";
   value: number;
   unit: string;
   status: "normal" | "warning" | "alert";
-  name: string; // Added name property to the interface
+  name: string;
 }
 
 const VitalCard = ({ type, value, unit, status, name }: VitalCardProps) => {
+  const { t } = useTranslation();
+  
   const icons = {
     heart: Heart,
     temp: Thermometer,
@@ -39,7 +41,7 @@ const VitalCard = ({ type, value, unit, status, name }: VitalCardProps) => {
     >
       <div className="flex items-center justify-between">
         <Icon className="h-6 w-6" />
-        <span className="text-sm font-medium">Real-time</span>
+        <span className="text-sm font-medium">{t('real.time')}</span>
       </div>
       <div className="mt-4">
         <div className="flex items-baseline">
@@ -47,7 +49,7 @@ const VitalCard = ({ type, value, unit, status, name }: VitalCardProps) => {
           <span className="ml-1 text-sm">{unit}</span>
         </div>
         <p className="mt-2 text-sm opacity-90">
-          {name}
+          {t(name)}
         </p>
       </div>
     </motion.div>

@@ -136,44 +136,34 @@ const resources = {
   },
   es: {
     translation: {
-      // Navegación
+      // Navigation and Headers
       "back.to.monitor": "Volver al monitor",
       "settings": "Ajustes",
       
-      // Panel principal
+      // Dashboard & Monitoring
       "app.title": "Monitor Baby Vital",
       "app.welcome": "Bienvenido a Monitor Baby Vital",
       "app.subtitle": "Accede a tu cuenta para empezar a cuidar de tu bebé con amor",
       "monitor.active": "Monitoreo activo. Todos los signos vitales están siendo registrados.",
       "monitor.inactive": "Por favor conecta tu dispositivo de monitoreo para comenzar a registrar signos vitales.",
+      "real.time": "Tiempo real",
+      "baby.state": "Estado del bebé",
       
-      // Signos Vitales
-      "heart.rate": "Ritmo Cardíaco",
+      // Vital Signs
+      "heart.rate": "Ritmo cardíaco",
       "temperature": "Temperatura",
-      "respiratory.rate": "Frecuencia Respiratoria",
+      "respiratory.rate": "Frecuencia respiratoria",
       
-      // Ajustes
-      "language": "Idioma",
-      "registered.babies": "Bebés Registrados",
-      "add.baby": "Añadir Bebé",
-      "bluetooth.devices": "Dispositivos Bluetooth",
-      "scan": "Escanear",
-      "no.devices": "No hay dispositivos disponibles.",
-      
-      // Estado de Conexión
-      "connected": "Conectado",
-      "disconnected": "Desconectado",
-      
-      // Weekly Records
-      "weekly.records": "Registros Semanales",
-      "current.week": "Semana Actual",
-      "no.records": "No hay registros disponibles para esta semana",
-      "download": "Descargar",
-      "share": "Compartir",
-      
-      // Baby Management
-      "no.babies.registered": "No hay bebés registrados aún",
-      "select.baby": "Seleccionar Bebé",
+      // Medical Information
+      "medical.info": "Información médica",
+      "pediatric.center": "Centro pediátrico",
+      "pediatrician.name": "Nombre del pediatra",
+      "center.phone": "Teléfono del centro",
+      "center.email": "Correo electrónico del centro",
+      "not.specified": "Aún no especificado",
+      "pending.user": "Pendiente de completar por el usuario",
+      "pediatrician": "Pediatra",
+      "allow.pediatrician": "Permitir acceso de solo lectura al pediatra",
       
       // Autenticación
       "login.title": "¡Bienvenido de nuevo!",
