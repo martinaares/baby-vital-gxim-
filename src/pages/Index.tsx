@@ -26,7 +26,7 @@ const Index = () => {
   const vitalSigns = [
     {
       type: "heart" as const,
-      name: "baby.state",
+      name: t("baby.state"),
       value: 128,
       unit: "bpm",
       status: "normal" as const,
@@ -34,7 +34,7 @@ const Index = () => {
     },
     {
       type: "temp" as const,
-      name: "temperature",
+      name: t("baby.temperature"),
       value: 36.7,
       unit: "°C",
       status: "normal" as const,
@@ -42,7 +42,7 @@ const Index = () => {
     },
     {
       type: "resp" as const,
-      name: "respiratory.rate",
+      name: t("baby.breathing"),
       value: 30,
       unit: "rpm",
       status: "normal" as const,

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -23,7 +24,7 @@ const UserProfile = () => {
   const { user } = useAuth();
   const [babies] = useState<BabyProfile[]>(mockBabies);
   const [isEditing, setIsEditing] = useState(false);
-
+  
   const formatName = (email: string) => {
     const name = email?.split('@')[0] || "";
     return name.replace('.', ' ').split(' ')
@@ -80,7 +81,7 @@ const UserProfile = () => {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <Hospital className="w-5 h-5" />
-            {t('medical.info')}
+            Información Médica
           </h2>
           <Button 
             variant="ghost" 
@@ -88,35 +89,31 @@ const UserProfile = () => {
             onClick={() => setIsEditing(!isEditing)}
           >
             <Edit2 className="w-4 h-4 mr-2" />
-            {t('edit')}
+            Editar
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('pediatric.center')}</p>
-            <p className="font-medium">
-              {healthCenter || t('not.specified')}
-            </p>
+            <p className="text-sm text-muted-foreground">Centro pediátrico</p>
+            <p className="font-medium">Centro de Salud Infantil San Miguel</p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('pediatrician.name')}</p>
-            <p className="font-medium">
-              {pediatrician || t('not.specified')}
-            </p>
+            <p className="text-sm text-muted-foreground">Pediatra asignado</p>
+            <p className="font-medium">Dra. Ana María Sánchez</p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('center.phone')}</p>
+            <p className="text-sm text-muted-foreground">Teléfono de contacto</p>
             <p className="font-medium flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              {phone || t('not.specified')}
+              +34 912 345 678
             </p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('center.email')}</p>
+            <p className="text-sm text-muted-foreground">Correo del centro</p>
             <p className="font-medium flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              {email || t('not.specified')}
+              pediatria.sanmiguel@salud.es
             </p>
           </div>
         </div>
