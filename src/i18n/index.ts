@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -10,8 +9,9 @@ const resources = {
       "settings": "Settings",
       
       // Dashboard
-      "app.title": "Baby Vital Signs Monitor",
-      "app.subtitle": "Real-time monitoring of your baby's vital signs",
+      "app.title": "Monitor Baby Vital",
+      "app.welcome": "Welcome to Monitor Baby Vital",
+      "app.subtitle": "Sign in to your account to start taking care of your baby with love",
       "monitor.active": "Monitoring active. All vital signs are being recorded.",
       "monitor.inactive": "Please connect your monitoring device to begin tracking vital signs.",
       
@@ -44,8 +44,8 @@ const resources = {
       "select.baby": "Select Baby",
       
       // Authentication
-      "login.title": "Sign In",
-      "login.subtitle": "Access your baby's vital signs monitoring",
+      "login.title": "Welcome back!",
+      "login.subtitle": "Access your baby monitoring dashboard",
       "login.email": "Email",
       "login.password": "Password",
       "login.forgot": "Forgot password?",
@@ -115,8 +115,9 @@ const resources = {
       "settings": "Ajustes",
       
       // Panel principal
-      "app.title": "Monitor de Signos Vitales del Bebé",
-      "app.subtitle": "Monitoreo en tiempo real de los signos vitales de tu bebé",
+      "app.title": "Monitor Baby Vital",
+      "app.welcome": "Bienvenido a Monitor Baby Vital",
+      "app.subtitle": "Accede a tu cuenta para empezar a cuidar de tu bebé con amor",
       "monitor.active": "Monitoreo activo. Todos los signos vitales están siendo registrados.",
       "monitor.inactive": "Por favor conecta tu dispositivo de monitoreo para comenzar a registrar signos vitales.",
       
@@ -149,8 +150,8 @@ const resources = {
       "select.baby": "Seleccionar Bebé",
       
       // Autenticación
-      "login.title": "Iniciar Sesión",
-      "login.subtitle": "Accede al monitoreo de signos vitales de tu bebé",
+      "login.title": "¡Bienvenido de nuevo!",
+      "login.subtitle": "Accede al panel de control de tu bebé",
       "login.email": "Correo electrónico",
       "login.password": "Contraseña",
       "login.forgot": "¿Olvidaste tu contraseña?",

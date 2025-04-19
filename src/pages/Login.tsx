@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, Baby } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "react-i18next";
@@ -54,13 +54,16 @@ const Login = () => {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">{t("app.title")}</h1>
-          <p className="text-secondary-foreground">{t("login.subtitle")}</p>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Baby className="h-8 w-8 text-primary" />
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {t("app.welcome")}
+            </h1>
+          </div>
+          <p className="text-secondary-foreground">{t("app.subtitle")}</p>
         </div>
 
-        <div className="bg-card rounded-lg shadow-lg p-6 border">
-          <h2 className="text-xl font-semibold mb-6 text-center">{t("login.title")}</h2>
-          
+        <div className="glass-card rounded-lg shadow-lg p-6">
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium">{t("login.email")}</label>
@@ -110,7 +113,7 @@ const Login = () => {
               </div>
             </div>
             
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="w-full baby-gradient" disabled={isLoading}>
               {isLoading ? t("login.loading") : t("login.action")}
             </Button>
           </form>
