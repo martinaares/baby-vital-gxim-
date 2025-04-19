@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Baby, Mail, User, Hospital, Calendar, Plus, Edit2 } from "lucide-react";
+import { Baby, Mail, User, Hospital, Phone, Edit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { mockBabies } from "@/utils/mockData";
 import { useAuth } from "@/hooks/useAuth";
 import { Badge } from "@/components/ui/badge";
@@ -20,14 +22,14 @@ interface BabyProfile {
 const UserProfile = () => {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const [babies, setBabies] = useState<BabyProfile[]>(mockBabies);
+  const [babies] = useState<BabyProfile[]>(mockBabies);
   const [isEditing, setIsEditing] = useState(false);
   
-  const calculateAge = (birthDate: string) => {
-    const birth = new Date(birthDate);
-    const today = new Date();
-    const months = (today.getFullYear() - birth.getFullYear()) * 12 + today.getMonth() - birth.getMonth();
-    return months < 1 ? "Recién nacido" : `${months} meses`;
+  const formatName = (email: string) => {
+    const name = email?.split('@')[0] || "";
+    return name.replace('.', ' ').split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   };
 
   return (
@@ -35,7 +37,7 @@ const UserProfile = () => {
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card p-6 rounded-lg"
+        className="glass-card p-6 rounded-lg bg-white/60 dark:bg-white/10"
       >
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold flex items-center gap-2">
@@ -57,7 +59,7 @@ const UserProfile = () => {
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Nombre completo</p>
             <p className="font-medium flex items-center gap-2">
-              {user?.email?.split('@')[0] || "Usuario"}
+              {formatName(user?.email || "Usuario")}
             </p>
           </div>
           <div className="space-y-2">
@@ -67,37 +69,6 @@ const UserProfile = () => {
               {user?.email || "correo@ejemplo.com"}
             </p>
           </div>
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Bebés registrados</p>
-            <p className="font-medium flex items-center gap-2">
-              <Baby className="w-4 h-4" />
-              {babies.length}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Miembro desde</p>
-            <p className="font-medium flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              {new Date().toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Centro de salud</p>
-            <p className="font-medium flex items-center gap-2">
-              <Hospital className="w-4 h-4" />
-              No especificado
-            </p>
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">Tipo de cuenta</p>
-            <Badge variant="outline" className="bg-primary/10">
-              {user?.role === 'admin' ? 'Administrador' : 'Usuario'}
-            </Badge>
-          </div>
         </div>
       </motion.section>
 
@@ -105,78 +76,117 @@ const UserProfile = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="glass-card p-6 rounded-lg"
+        className="glass-card p-6 rounded-lg bg-white/60 dark:bg-white/10"
+      >
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
+            <Hospital className="w-5 h-5" />
+            Información Médica
+          </h2>
+          <Button 
+            variant="ghost" 
+            size="sm"
+            onClick={() => setIsEditing(!isEditing)}
+          >
+            <Edit2 className="w-4 h-4 mr-2" />
+            Editar
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Centro pediátrico</p>
+            <p className="font-medium">Centro de Salud Infantil San Miguel</p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Pediatra asignado</p>
+            <p className="font-medium">Dra. Ana María Sánchez</p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Teléfono de contacto</p>
+            <p className="font-medium flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              +34 912 345 678
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Correo del centro</p>
+            <p className="font-medium flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              pediatria.sanmiguel@salud.es
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="glass-card p-6 rounded-lg bg-white/60 dark:bg-white/10"
       >
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <Baby className="w-5 h-5" />
-            {t('registered.babies')}
+            Bebés Registrados
           </h2>
-          <Button size="sm" className="flex items-center gap-2">
-            <Plus className="w-4 h-4" />
-            {t('add.baby')}
-          </Button>
+          <Badge variant="outline" className="bg-primary/10">
+            {babies.length} bebés
+          </Badge>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {babies.map((baby) => (
-            <div key={baby.id} className="bg-white/40 p-4 rounded-lg space-y-3">
-              <div className="flex justify-between items-start">
+            <Card key={baby.id} className="bg-white/40 border-none">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <h3 className="font-semibold">{baby.name}</h3>
                 <Button variant="ghost" size="sm">
                   <Edit2 className="w-4 h-4" />
                 </Button>
-              </div>
-              <div className="space-y-2 text-sm">
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
                 <p>
-                  <span className="text-muted-foreground">{t('age')}:</span>{' '}
-                  {calculateAge(baby.birthDate)}
+                  <span className="text-muted-foreground">Edad:</span>{' '}
+                  {baby.birthDate ? formatAge(baby.birthDate) : 'No especificado'}
                 </p>
                 <p>
-                  <span className="text-muted-foreground">{t('birth.date')}:</span>{' '}
-                  {new Date(baby.birthDate).toLocaleDateString()}
+                  <span className="text-muted-foreground">Fecha de nacimiento:</span>{' '}
+                  {formatDate(baby.birthDate)}
                 </p>
                 {baby.weight && (
                   <p>
-                    <span className="text-muted-foreground">{t('weight')}:</span>{' '}
+                    <span className="text-muted-foreground">Peso:</span>{' '}
                     {baby.weight}
                   </p>
                 )}
                 {baby.height && (
                   <p>
-                    <span className="text-muted-foreground">{t('height')}:</span>{' '}
+                    <span className="text-muted-foreground">Altura:</span>{' '}
                     {baby.height}
                   </p>
                 )}
-                {baby.deviceId && (
-                  <p>
-                    <span className="text-muted-foreground">{t('device')}:</span>{' '}
-                    {baby.deviceId}
-                  </p>
-                )}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </motion.section>
-
-      <div className="glass-card p-4 rounded-lg">
-        <div className="bg-secondary/30 rounded-md p-4 text-center">
-          <div className="flex items-center justify-center gap-4">
-            <img 
-              src="/placeholder.svg" 
-              alt="Ejemplo de publicidad" 
-              className="w-24 h-24 object-cover rounded"
-            />
-            <div className="text-left">
-              <p className="font-medium text-secondary-foreground">Publicidad Infantil (ejemplo)</p>
-              <p className="text-sm text-muted-foreground">Productos y servicios para bebés</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
+};
+
+const formatAge = (birthDate: string) => {
+  const birth = new Date(birthDate);
+  const today = new Date();
+  const months = (today.getFullYear() - birth.getFullYear()) * 12 + today.getMonth() - birth.getMonth();
+  return months < 1 ? "Recién nacido" : `${months} meses`;
+};
+
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 };
 
 export default UserProfile;
