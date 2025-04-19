@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -106,6 +107,23 @@ const resources = {
       "sleep.light": "Light Sleep",
       "sleep.awake": "Awake",
       "sleep.analysis": "Sleep Analysis",
+      
+      // User Profile
+      "personal.info": "Personal Information",
+      "name": "Full name",
+      "email": "Email",
+      "member.since": "Member since",
+      "health.center": "Health center",
+      "account.type": "Account type",
+      "edit.profile": "Edit profile",
+      "not.specified": "Not specified",
+      "newborn": "Newborn",
+      "months": "months",
+      "age": "Age",
+      "birth.date": "Birth date",
+      "weight": "Weight",
+      "height": "Height",
+      "device": "Device"
     }
   },
   es: {
@@ -217,7 +235,6 @@ const resources = {
       "personal.info": "Información Personal",
       "name": "Nombre completo",
       "email": "Correo electrónico",
-      "registered.babies": "Bebés registrados",
       "member.since": "Miembro desde",
       "health.center": "Centro de salud",
       "account.type": "Tipo de cuenta",
@@ -225,6 +242,11 @@ const resources = {
       "not.specified": "No especificado",
       "newborn": "Recién nacido",
       "months": "meses",
+      "age": "Edad",
+      "birth.date": "Fecha de nacimiento",
+      "weight": "Peso",
+      "height": "Altura",
+      "device": "Dispositivo"
     }
   }
 };
