@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -150,6 +149,32 @@ const resources = {
       "delete.baby.title": "¿Eliminar bebé?",
       "delete.baby.description": "Esta acción no se puede deshacer. ¿Estás seguro de que quieres eliminar este bebé?",
       "babies": "bebés",
+      
+      "language.selector": "Idioma",
+      "language.es": "Español",
+      "language.en": "English",
+      "language.fr": "Français",
+      "language.de": "Deutsch",
+      "language.it": "Italiano",
+      "language.pt": "Português",
+      "language.nl": "Nederlands",
+      "language.pl": "Polski",
+      "language.sv": "Svenska",
+      "language.ro": "Română",
+      "language.cs": "Čeština",
+      "language.hu": "Magyar",
+      "language.el": "Ελληνικά",
+      "language.bg": "Български",
+      "language.hr": "Hrvatski",
+      "language.da": "Dansk",
+      "language.sk": "Slovenčina",
+      "language.sl": "Slovenščina",
+      "language.et": "Eesti",
+      "language.fi": "Suomi",
+      "language.ga": "Gaeilge",
+      "language.lv": "Latviešu",
+      "language.lt": "Lietuvių",
+      "language.mt": "Malti",
     }
   },
   en: {
@@ -299,45 +324,64 @@ const resources = {
       "delete.baby.title": "Delete baby?",
       "delete.baby.description": "This action cannot be undone. Are you sure you want to delete this baby?",
       "babies": "babies",
+      
+      "language.selector": "Language",
+      "language.es": "Español",
+      "language.en": "English",
+      "language.fr": "Français",
+      "language.de": "Deutsch",
+      "language.it": "Italiano",
+      "language.pt": "Português",
+      "language.nl": "Nederlands",
+      "language.pl": "Polski",
+      "language.sv": "Svenska",
+      "language.ro": "Română",
+      "language.cs": "Čeština",
+      "language.hu": "Magyar",
+      "language.el": "Ελληνικά",
+      "language.bg": "Български",
+      "language.hr": "Hrvatski",
+      "language.da": "Dansk",
+      "language.sk": "Slovenčina",
+      "language.sl": "Slovenščina",
+      "language.et": "Eesti",
+      "language.fi": "Suomi",
+      "language.ga": "Gaeilge",
+      "language.lv": "Latviešu",
+      "language.lt": "Lietuvių",
+      "language.mt": "Malti",
     }
   },
-  fr: {
-    translation: {
-      // French translations
-      "edit": "Modifier",
-      "save": "Enregistrer",
-      "delete": "Supprimer",
-      "cancel": "Annuler",
-      "not.specified": "Non spécifié",
-      "delete.baby.title": "Supprimer le bébé?",
-      "delete.baby.description": "Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir supprimer ce bébé?",
-      "babies": "bébés",
-      "add.baby": "Ajouter un bébé"
-    }
-  },
-  de: {
-    translation: {
-      // German translations
-      "edit": "Bearbeiten",
-      "save": "Speichern",
-      "delete": "Löschen",
-      "cancel": "Abbrechen",
-      "not.specified": "Nicht angegeben",
-      "delete.baby.title": "Beben löschen?",
-      "delete.baby.description": "Diese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher, dass Sie diesen Baby löschen möchten?",
-      "babies": "Beben",
-      "add.baby": "Beben hinzufügen"
-    }
-  },
-  // Add more languages as needed (it, pt, nl, pl, sv, ro, cs, el)
+  fr: { translation: {} },
+  de: { translation: {} },
+  it: { translation: {} },
+  pt: { translation: {} },
+  nl: { translation: {} },
+  pl: { translation: {} },
+  sv: { translation: {} },
+  ro: { translation: {} },
+  cs: { translation: {} },
+  hu: { translation: {} },
+  el: { translation: {} },
+  bg: { translation: {} },
+  hr: { translation: {} },
+  da: { translation: {} },
+  sk: { translation: {} },
+  sl: { translation: {} },
+  et: { translation: {} },
+  fi: { translation: {} },
+  ga: { translation: {} },
+  lv: { translation: {} },
+  lt: { translation: {} },
+  mt: { translation: {} },
 };
 
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'es',
-    fallbackLng: 'es',
+    lng: localStorage.getItem('preferredLanguage') || 'es',
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
