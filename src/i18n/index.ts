@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -131,6 +132,7 @@ const resources = {
       "pediatrician": "Pediatra",
       "pediatrician.placeholder": "Ingrese el nombre del pediatra",
       "allow.access": "Permitir acceso de solo lectura al pediatra",
+      "phone": "Teléfono",
 
       // Premium Features
       "premium.title": "Versión Premium",
@@ -145,11 +147,9 @@ const resources = {
       "save": "Guardar",
       "delete": "Eliminar",
       "cancel": "Cancelar",
-      "not.specified": "Sin completar",
       "delete.baby.title": "¿Eliminar bebé?",
       "delete.baby.description": "Esta acción no se puede deshacer. ¿Estás seguro de que quieres eliminar este bebé?",
       "babies": "bebés",
-      "add.baby": "Añadir bebé"
     }
   },
   en: {
@@ -281,6 +281,7 @@ const resources = {
       "pediatrician": "Pediatrician",
       "pediatrician.placeholder": "Enter pediatrician's name",
       "allow.access": "Allow read-only access to pediatrician",
+      "phone": "Phone",
 
       // Premium Features
       "premium.title": "Premium Version",
@@ -295,11 +296,9 @@ const resources = {
       "save": "Save",
       "delete": "Delete",
       "cancel": "Cancel",
-      "not.specified": "Not specified",
       "delete.baby.title": "Delete baby?",
       "delete.baby.description": "This action cannot be undone. Are you sure you want to delete this baby?",
       "babies": "babies",
-      "add.baby": "Add baby"
     }
   },
   fr: {
