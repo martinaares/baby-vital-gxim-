@@ -1,16 +1,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Hospital } from "lucide-react";
+import { ArrowLeft, Globe, Hospital } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import BluetoothStatus from "../components/BluetoothStatus";
 import UserProfile from "../components/UserProfile";
 import PremiumSection from "../components/PremiumSection";
-import LanguageSelector from "../components/LanguageSelector";
 
 const Settings = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language);
+  const [healthCenter, setHealthCenter] = useState("");
+  const [pediatrician, setPediatrician] = useState("");
+  const [allowAccess, setAllowAccess] = useState(false);
+
+  const handleLanguageChange = (newLang: string) => {
+    setLanguage(newLang);
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <div className="min-h-screen bg-background p-6">
@@ -42,7 +50,65 @@ const Settings = () => {
             animate={{ opacity: 1, y: 0 }}
             className="glass-card p-6 rounded-lg"
           >
-            <LanguageSelector />
+            <div className="mb-4 flex items-center">
+              <Globe className="mr-2 h-5 w-5" />
+              <h2 className="text-xl font-semibold">{t('language')}</h2>
+            </div>
+            <select
+              value={language}
+              onChange={(e) => handleLanguageChange(e.target.value)}
+              className="w-full rounded-md border border-input bg-background px-3 py-2"
+            >
+              <option value="es">Español</option>
+              <option value="en">English</option>
+            </select>
+          </motion.section>
+
+          {/* Medical Information Section */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="glass-card p-6 rounded-lg"
+          >
+            <div className="mb-4 flex items-center">
+              <Hospital className="mr-2 h-5 w-5" />
+              <h2 className="text-xl font-semibold">{t('medical.info')}</h2>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">{t('health.center')}</label>
+                <input
+                  type="text"
+                  value={healthCenter}
+                  onChange={(e) => setHealthCenter(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2"
+                  placeholder={t('health.center.placeholder')}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">{t('pediatrician')}</label>
+                <input
+                  type="text"
+                  value={pediatrician}
+                  onChange={(e) => setPediatrician(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2"
+                  placeholder={t('pediatrician.placeholder')}
+                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="allowAccess"
+                  checked={allowAccess}
+                  onChange={(e) => setAllowAccess(e.target.checked)}
+                  className="rounded border-gray-300"
+                />
+                <label htmlFor="allowAccess" className="text-sm">
+                  {t('allow.access')}
+                </label>
+              </div>
+            </div>
           </motion.section>
         </div>
       </motion.div>
