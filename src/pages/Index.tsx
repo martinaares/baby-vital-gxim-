@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Settings, BarChart, Heart } from "lucide-react";
+import { Settings, BarChart, Heart, Brain, Stethoscope } from "lucide-react";
 import VitalCard from "../components/VitalCard";
 import BluetoothStatus from "../components/BluetoothStatus";
 import BabySelector from "../components/BabySelector";
@@ -62,9 +62,23 @@ const Index = () => {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center gap-2">
             <Heart className="h-6 w-6 text-primary" />
-            Monitor Baby Vital
+            {t('app.title')}
           </h1>
           <div className="flex items-center space-x-4">
+            <Link
+              to="/tips"
+              className="hidden md:flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Brain className="h-5 w-5" />
+              <span>{t('tips.title')}</span>
+            </Link>
+            <Link
+              to="/appointments"
+              className="hidden md:flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Stethoscope className="h-5 w-5" />
+              <span>{t('appointments.title')}</span>
+            </Link>
             <Link
               to="/weekly-records"
               className="hidden md:flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"

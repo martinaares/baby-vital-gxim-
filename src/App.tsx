@@ -15,6 +15,8 @@ import ResetPassword from "./pages/ResetPassword";
 import Welcome from "./pages/Welcome";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./hooks/useAuth";
+import PediatricTips from "./components/PediatricTips";
+import MedicalAppointments from "./components/MedicalAppointments";
 
 const queryClient = new QueryClient();
 
@@ -26,26 +28,28 @@ const App = () => (
           <Toaster />
           <Sonner />
           <Routes>
-            {/* Rutas públicas */}
+            {/* Public routes */}
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             
-            {/* Rutas protegidas */}
+            {/* Protected routes */}
             <Route element={<PrivateRoute />}>
               <Route path="/" element={<Index />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/weekly-records" element={<WeeklyRecords />} />
+              <Route path="/tips" element={<PediatricTips />} />
+              <Route path="/appointments" element={<MedicalAppointments />} />
             </Route>
             
-            {/* Ruta para administradores */}
+            {/* Admin routes */}
             <Route element={<PrivateRoute adminOnly={true} />}>
-              {/* Aquí se pueden agregar rutas solo para administradores */}
+              {/* Add admin routes here */}
             </Route>
             
-            {/* Ruta 404 */}
+            {/* 404 route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

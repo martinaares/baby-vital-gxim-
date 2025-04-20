@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -150,6 +149,37 @@ const resources = {
       "delete.baby.title": "¿Eliminar bebé?",
       "delete.baby.description": "Esta acción no se puede deshacer. ¿Estás seguro de que quieres eliminar este bebé?",
       "babies": "bebés",
+      
+      // Pediatric Tips
+      "tips.title": "Consejos Pediátricos",
+      "tips.sleep.title": "Sueño del bebé",
+      "tips.sleep.tip1": "Mantén un horario regular para dormir",
+      "tips.sleep.tip2": "Crea una rutina relajante antes de dormir",
+      "tips.nutrition.title": "Alimentación",
+      "tips.nutrition.tip1": "Ofrece alimentos variados y nutritivos",
+      "tips.nutrition.tip2": "Establece horarios regulares de comida",
+      "tips.hygiene.title": "Higiene",
+      "tips.hygiene.tip1": "Baña al bebé con agua tibia",
+      "tips.hygiene.tip2": "Limpia suavemente el área del pañal",
+      "tips.alerts.title": "Signos de alerta",
+      "tips.alerts.tip1": "Fiebre superior a 38°C",
+      "tips.alerts.tip2": "Cambios en el apetito o sueño",
+      "tips.development.title": "Desarrollo",
+      "tips.development.tip1": "Estimula el desarrollo con juegos",
+      "tips.development.tip2": "Observa los hitos del desarrollo",
+
+      // Medical Appointments
+      "appointments.title": "Citas Médicas",
+      "appointments.add": "Añadir cita médica",
+      "appointments.new": "Nueva cita médica",
+      "appointments.date": "Fecha",
+      "appointments.time": "Hora",
+      "appointments.reason": "Motivo",
+      "appointments.location": "Centro médico",
+      "appointments.doctor": "Pediatra",
+      "appointments.empty": "No hay citas médicas registradas",
+      "appointments.notify": "Recordatorio",
+      "appointments.notification": "Activar notificación",
     }
   },
   en: {
@@ -299,6 +329,37 @@ const resources = {
       "delete.baby.title": "Delete baby?",
       "delete.baby.description": "This action cannot be undone. Are you sure you want to delete this baby?",
       "babies": "babies",
+      
+      // Pediatric Tips
+      "tips.title": "Pediatric Tips",
+      "tips.sleep.title": "Baby Sleep",
+      "tips.sleep.tip1": "Maintain a regular sleep schedule",
+      "tips.sleep.tip2": "Create a relaxing bedtime routine",
+      "tips.nutrition.title": "Nutrition",
+      "tips.nutrition.tip1": "Offer varied and nutritious foods",
+      "tips.nutrition.tip2": "Establish regular meal times",
+      "tips.hygiene.title": "Hygiene",
+      "tips.hygiene.tip1": "Bathe baby in warm water",
+      "tips.hygiene.tip2": "Gently clean diaper area",
+      "tips.alerts.title": "Warning Signs",
+      "tips.alerts.tip1": "Fever above 38°C",
+      "tips.alerts.tip2": "Changes in appetite or sleep",
+      "tips.development.title": "Development",
+      "tips.development.tip1": "Stimulate development through play",
+      "tips.development.tip2": "Observe developmental milestones",
+
+      // Medical Appointments
+      "appointments.title": "Medical Appointments",
+      "appointments.add": "Add appointment",
+      "appointments.new": "New appointment",
+      "appointments.date": "Date",
+      "appointments.time": "Time",
+      "appointments.reason": "Reason",
+      "appointments.location": "Medical center",
+      "appointments.doctor": "Pediatrician",
+      "appointments.empty": "No medical appointments registered",
+      "appointments.notify": "Reminder",
+      "appointments.notification": "Enable notification",
     }
   },
   fr: {
