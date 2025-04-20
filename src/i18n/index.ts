@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -19,6 +20,9 @@ const resources = {
       "heart.rate": "Heart Rate",
       "temperature": "Temperature",
       "respiratory.rate": "Respiratory Rate",
+      "baby.state": "Baby State",
+      "baby.temperature": "Temperature",
+      "baby.breathing": "Breathing Rate",
       
       // Settings
       "language": "Language",
@@ -123,6 +127,11 @@ const resources = {
       "weight": "Weight",
       "height": "Height",
       "device": "Device",
+      "medical.info": "Medical Information",
+      "health.center.placeholder": "Enter health center name",
+      "pediatrician": "Pediatrician",
+      "pediatrician.placeholder": "Enter pediatrician's name",
+      "allow.access": "Allow read-only access to pediatrician",
 
       // Premium Features
       "premium.title": "Premium Version",
@@ -151,6 +160,9 @@ const resources = {
       "heart.rate": "Ritmo Cardíaco",
       "temperature": "Temperatura",
       "respiratory.rate": "Frecuencia Respiratoria",
+      "baby.state": "Estado del bebé",
+      "baby.temperature": "Temperatura",
+      "baby.breathing": "Frecuencia Respiratoria",
       
       // Ajustes
       "language": "Idioma",
@@ -255,6 +267,11 @@ const resources = {
       "weight": "Peso",
       "height": "Altura",
       "device": "Dispositivo",
+      "medical.info": "Información Médica",
+      "health.center.placeholder": "Ingrese el nombre del centro de salud",
+      "pediatrician": "Pediatra",
+      "pediatrician.placeholder": "Ingrese el nombre del pediatra",
+      "allow.access": "Permitir acceso de solo lectura al pediatra",
 
       // Premium Features
       "premium.title": "Versión Premium",

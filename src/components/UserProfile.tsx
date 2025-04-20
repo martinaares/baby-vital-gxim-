@@ -25,6 +25,12 @@ const UserProfile = () => {
   const [babies] = useState<BabyProfile[]>(mockBabies);
   const [isEditing, setIsEditing] = useState(false);
   
+  // Add missing state variables
+  const [healthCenter, setHealthCenter] = useState("Centro de Salud Infantil San Miguel");
+  const [pediatrician, setPediatrician] = useState("Dra. Ana María Sánchez");
+  const [phone, setPhone] = useState("+34 912 345 678");
+  const [email, setEmail] = useState("pediatria.sanmiguel@salud.es");
+  
   const formatName = (email: string) => {
     const name = email?.split('@')[0] || "";
     return name.replace('.', ' ').split(' ')
@@ -96,24 +102,24 @@ const UserProfile = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Centro pediátrico</p>
-            <p className="font-medium">Centro de Salud Infantil San Miguel</p>
+            <p className="font-medium">{healthCenter}</p>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Pediatra asignado</p>
-            <p className="font-medium">Dra. Ana María Sánchez</p>
+            <p className="font-medium">{pediatrician}</p>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Teléfono de contacto</p>
             <p className="font-medium flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              +34 912 345 678
+              {phone}
             </p>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Correo del centro</p>
             <p className="font-medium flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              pediatria.sanmiguel@salud.es
+              {email}
             </p>
           </div>
         </div>
