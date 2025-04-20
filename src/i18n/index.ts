@@ -1,8 +1,157 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
+  es: {
+    translation: {
+      // Navegación
+      "back.to.monitor": "Volver al monitor",
+      "settings": "Ajustes",
+      
+      // Panel principal
+      "app.title": "Monitor Baby Vital",
+      "app.welcome": "Bienvenido a Monitor Baby Vital",
+      "app.subtitle": "Accede a tu cuenta para empezar a cuidar de tu bebé con amor",
+      "monitor.active": "Monitoreo activo. Todos los signos vitales están siendo registrados.",
+      "monitor.inactive": "Por favor conecta tu dispositivo de monitoreo para comenzar a registrar signos vitales.",
+      
+      // Signos Vitales
+      "heart.rate": "Ritmo Cardíaco",
+      "temperature": "Temperatura",
+      "respiratory.rate": "Frecuencia Respiratoria",
+      "baby.state": "Estado del bebé",
+      "baby.temperature": "Temperatura",
+      "baby.breathing": "Frecuencia Respiratoria",
+      
+      // Ajustes
+      "language": "Idioma",
+      "registered.babies": "Bebés Registrados",
+      "add.baby": "Añadir Bebé",
+      "bluetooth.devices": "Dispositivos Bluetooth",
+      "scan": "Escanear",
+      "no.devices": "No hay dispositivos disponibles.",
+      
+      // Estado de Conexión
+      "connected": "Conectado",
+      "disconnected": "Desconectado",
+      
+      // Weekly Records
+      "weekly.records": "Registros Semanales",
+      "current.week": "Semana Actual",
+      "no.records": "No hay registros disponibles para esta semana",
+      "download": "Descargar",
+      "share": "Compartir",
+      
+      // Baby Management
+      "no.babies.registered": "No hay bebés registrados aún",
+      "select.baby": "Seleccionar Bebé",
+      
+      // Autenticación
+      "login.title": "¡Bienvenido de nuevo!",
+      "login.subtitle": "Accede al panel de control de tu bebé",
+      "login.email": "Correo electrónico",
+      "login.password": "Contraseña",
+      "login.forgot": "¿Olvidaste tu contraseña?",
+      "login.action": "Iniciar sesión",
+      "login.loading": "Iniciando sesión...",
+      "login.no.account": "¿No tienes una cuenta?",
+      "login.register": "Crear cuenta",
+      "login.success": "¡Bienvenido de nuevo!",
+      "login.welcome": "Has iniciado sesión correctamente",
+      "login.error": "Error de inicio de sesión",
+      "login.invalid": "Correo o contraseña inválidos",
+      
+      "register.title": "Crear Cuenta",
+      "register.subtitle": "Comienza a monitorear los signos vitales de tu bebé",
+      "register.firstName": "Nombre",
+      "register.firstName.placeholder": "Juan",
+      "register.lastName": "Apellidos",
+      "register.lastName.placeholder": "Pérez",
+      "register.email": "Correo electrónico",
+      "register.password": "Contraseña",
+      "register.password.requirements": "Al menos 8 caracteres con letras y números",
+      "register.action": "Crear cuenta",
+      "register.loading": "Creando cuenta...",
+      "register.have.account": "¿Ya tienes una cuenta?",
+      "register.login": "Iniciar sesión",
+      "register.success": "¡Cuenta creada!",
+      "register.verification": "Por favor revisa tu correo para verificar tu cuenta",
+      "register.error": "Error al registrarse",
+      
+      "verify.title": "Verifica tu Correo",
+      "verify.description": "Hemos enviado un enlace de verificación a tu correo electrónico. Por favor revisa tu bandeja de entrada y haz clic en el enlace para activar tu cuenta.",
+      "verify.login": "Volver a iniciar sesión",
+      "verify.no.email": "¿No recibiste el correo?",
+      "verify.resend": "Reenviar verificación",
+      
+      "reset.title": "Restablecer Contraseña",
+      "reset.description": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "reset.email": "Correo electrónico",
+      "reset.action": "Enviar enlace",
+      "reset.loading": "Enviando...",
+      "reset.back": "Volver a iniciar sesión",
+      "reset.error": "Error al enviar el enlace",
+      "reset.sent.title": "Revisa tu Correo",
+      "reset.sent.description": "Si existe una cuenta con este correo, hemos enviado un enlace para restablecer la contraseña.",
+      "reset.back.login": "Volver a iniciar sesión",
+      
+      "logout": "Cerrar sesión",
+      "logout.success": "Sesión cerrada",
+      "logout.message": "Has cerrado sesión correctamente",
+      
+      // Patrones de Sueño
+      "sleep.patterns": "Patrones de Sueño",
+      "sleep.daily": "Diario",
+      "sleep.weekly": "Semanal",
+      "sleep.monthly": "Mensual",
+      "sleep.total": "Sueño Total",
+      "sleep.deep": "Sueño Profundo",
+      "sleep.light": "Sueño Ligero",
+      "sleep.awake": "Despierto",
+      "sleep.analysis": "Análisis de Sueño",
+      
+      // User Profile
+      "personal.info": "Información Personal",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "member.since": "Miembro desde",
+      "health.center": "Centro de salud",
+      "account.type": "Tipo de cuenta",
+      "edit.profile": "Editar perfil",
+      "not.specified": "Sin completar",
+      "newborn": "Recién nacido",
+      "months": "meses",
+      "age": "Edad",
+      "birth.date": "Fecha de nacimiento",
+      "weight": "Peso",
+      "height": "Altura",
+      "device": "Dispositivo",
+      "medical.info": "Información Médica",
+      "health.center.placeholder": "Ingrese el nombre del centro de salud",
+      "pediatrician": "Pediatra",
+      "pediatrician.placeholder": "Ingrese el nombre del pediatra",
+      "allow.access": "Permitir acceso de solo lectura al pediatra",
+
+      // Premium Features
+      "premium.title": "Versión Premium",
+      "premium.description": "Disfruta de Monitor Baby Vital sin anuncios",
+      "premium.price": "Suscribirme por 2,99 €/mes",
+      "premium.button": "Suscribirme",
+      "premium.success": "¡Gracias por hacerte Premium!",
+      "premium.success.detail": "Ahora disfrutas de una experiencia sin anuncios",
+      "premium.benefits": "Eliminar toda la publicidad",
+      
+      "edit": "Editar",
+      "save": "Guardar",
+      "delete": "Eliminar",
+      "cancel": "Cancelar",
+      "not.specified": "Sin completar",
+      "delete.baby.title": "¿Eliminar bebé?",
+      "delete.baby.description": "Esta acción no se puede deshacer. ¿Estás seguro de que quieres eliminar este bebé?",
+      "babies": "bebés",
+      "add.baby": "Añadir bebé"
+    }
+  },
   en: {
     translation: {
       // Navigation
@@ -141,148 +290,47 @@ const resources = {
       "premium.success": "Thanks for going Premium!",
       "premium.success.detail": "You now enjoy an ad-free experience",
       "premium.benefits": "Remove all ads",
+      
+      "edit": "Edit",
+      "save": "Save",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "not.specified": "Not specified",
+      "delete.baby.title": "Delete baby?",
+      "delete.baby.description": "This action cannot be undone. Are you sure you want to delete this baby?",
+      "babies": "babies",
+      "add.baby": "Add baby"
     }
   },
-  es: {
+  fr: {
     translation: {
-      // Navegación
-      "back.to.monitor": "Volver al monitor",
-      "settings": "Ajustes",
-      
-      // Panel principal
-      "app.title": "Monitor Baby Vital",
-      "app.welcome": "Bienvenido a Monitor Baby Vital",
-      "app.subtitle": "Accede a tu cuenta para empezar a cuidar de tu bebé con amor",
-      "monitor.active": "Monitoreo activo. Todos los signos vitales están siendo registrados.",
-      "monitor.inactive": "Por favor conecta tu dispositivo de monitoreo para comenzar a registrar signos vitales.",
-      
-      // Signos Vitales
-      "heart.rate": "Ritmo Cardíaco",
-      "temperature": "Temperatura",
-      "respiratory.rate": "Frecuencia Respiratoria",
-      "baby.state": "Estado del bebé",
-      "baby.temperature": "Temperatura",
-      "baby.breathing": "Frecuencia Respiratoria",
-      
-      // Ajustes
-      "language": "Idioma",
-      "registered.babies": "Bebés Registrados",
-      "add.baby": "Añadir Bebé",
-      "bluetooth.devices": "Dispositivos Bluetooth",
-      "scan": "Escanear",
-      "no.devices": "No hay dispositivos disponibles.",
-      
-      // Estado de Conexión
-      "connected": "Conectado",
-      "disconnected": "Desconectado",
-      
-      // Weekly Records
-      "weekly.records": "Registros Semanales",
-      "current.week": "Semana Actual",
-      "no.records": "No hay registros disponibles para esta semana",
-      "download": "Descargar",
-      "share": "Compartir",
-      
-      // Baby Management
-      "no.babies.registered": "No hay bebés registrados aún",
-      "select.baby": "Seleccionar Bebé",
-      
-      // Autenticación
-      "login.title": "¡Bienvenido de nuevo!",
-      "login.subtitle": "Accede al panel de control de tu bebé",
-      "login.email": "Correo electrónico",
-      "login.password": "Contraseña",
-      "login.forgot": "¿Olvidaste tu contraseña?",
-      "login.action": "Iniciar sesión",
-      "login.loading": "Iniciando sesión...",
-      "login.no.account": "¿No tienes una cuenta?",
-      "login.register": "Crear cuenta",
-      "login.success": "¡Bienvenido de nuevo!",
-      "login.welcome": "Has iniciado sesión correctamente",
-      "login.error": "Error de inicio de sesión",
-      "login.invalid": "Correo o contraseña inválidos",
-      
-      "register.title": "Crear Cuenta",
-      "register.subtitle": "Comienza a monitorear los signos vitales de tu bebé",
-      "register.firstName": "Nombre",
-      "register.firstName.placeholder": "Juan",
-      "register.lastName": "Apellidos",
-      "register.lastName.placeholder": "Pérez",
-      "register.email": "Correo electrónico",
-      "register.password": "Contraseña",
-      "register.password.requirements": "Al menos 8 caracteres con letras y números",
-      "register.action": "Crear cuenta",
-      "register.loading": "Creando cuenta...",
-      "register.have.account": "¿Ya tienes una cuenta?",
-      "register.login": "Iniciar sesión",
-      "register.success": "¡Cuenta creada!",
-      "register.verification": "Por favor revisa tu correo para verificar tu cuenta",
-      "register.error": "Error al registrarse",
-      
-      "verify.title": "Verifica tu Correo",
-      "verify.description": "Hemos enviado un enlace de verificación a tu correo electrónico. Por favor revisa tu bandeja de entrada y haz clic en el enlace para activar tu cuenta.",
-      "verify.login": "Volver a iniciar sesión",
-      "verify.no.email": "¿No recibiste el correo?",
-      "verify.resend": "Reenviar verificación",
-      
-      "reset.title": "Restablecer Contraseña",
-      "reset.description": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
-      "reset.email": "Correo electrónico",
-      "reset.action": "Enviar enlace",
-      "reset.loading": "Enviando...",
-      "reset.back": "Volver a iniciar sesión",
-      "reset.error": "Error al enviar el enlace",
-      "reset.sent.title": "Revisa tu Correo",
-      "reset.sent.description": "Si existe una cuenta con este correo, hemos enviado un enlace para restablecer la contraseña.",
-      "reset.back.login": "Volver a iniciar sesión",
-      
-      "logout": "Cerrar sesión",
-      "logout.success": "Sesión cerrada",
-      "logout.message": "Has cerrado sesión correctamente",
-      
-      // Patrones de Sueño
-      "sleep.patterns": "Patrones de Sueño",
-      "sleep.daily": "Diario",
-      "sleep.weekly": "Semanal",
-      "sleep.monthly": "Mensual",
-      "sleep.total": "Sueño Total",
-      "sleep.deep": "Sueño Profundo",
-      "sleep.light": "Sueño Ligero",
-      "sleep.awake": "Despierto",
-      "sleep.analysis": "Análisis de Sueño",
-      
-      // User Profile
-      "personal.info": "Información Personal",
-      "name": "Nombre completo",
-      "email": "Correo electrónico",
-      "member.since": "Miembro desde",
-      "health.center": "Centro de salud",
-      "account.type": "Tipo de cuenta",
-      "edit.profile": "Editar perfil",
-      "not.specified": "No especificado",
-      "newborn": "Recién nacido",
-      "months": "meses",
-      "age": "Edad",
-      "birth.date": "Fecha de nacimiento",
-      "weight": "Peso",
-      "height": "Altura",
-      "device": "Dispositivo",
-      "medical.info": "Información Médica",
-      "health.center.placeholder": "Ingrese el nombre del centro de salud",
-      "pediatrician": "Pediatra",
-      "pediatrician.placeholder": "Ingrese el nombre del pediatra",
-      "allow.access": "Permitir acceso de solo lectura al pediatra",
-
-      // Premium Features
-      "premium.title": "Versión Premium",
-      "premium.description": "Disfruta de Monitor Baby Vital sin anuncios",
-      "premium.price": "Suscribirme por 2,99 €/mes",
-      "premium.button": "Suscribirme",
-      "premium.success": "¡Gracias por hacerte Premium!",
-      "premium.success.detail": "Ahora disfrutas de una experiencia sin anuncios",
-      "premium.benefits": "Eliminar toda la publicidad",
+      // French translations
+      "edit": "Modifier",
+      "save": "Enregistrer",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "not.specified": "Non spécifié",
+      "delete.baby.title": "Supprimer le bébé?",
+      "delete.baby.description": "Cette action ne peut pas être annulée. Êtes-vous sûr de vouloir supprimer ce bébé?",
+      "babies": "bébés",
+      "add.baby": "Ajouter un bébé"
     }
-  }
+  },
+  de: {
+    translation: {
+      // German translations
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "delete": "Löschen",
+      "cancel": "Abbrechen",
+      "not.specified": "Nicht angegeben",
+      "delete.baby.title": "Beben löschen?",
+      "delete.baby.description": "Diese Aktion kann nicht rückgängig gemacht werden. Sind Sie sicher, dass Sie diesen Baby löschen möchten?",
+      "babies": "Beben",
+      "add.baby": "Beben hinzufügen"
+    }
+  },
+  // Add more languages as needed (it, pt, nl, pl, sv, ro, cs, el)
 };
 
 i18n
@@ -290,6 +338,7 @@ i18n
   .init({
     resources,
     lng: 'es',
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false
     }
