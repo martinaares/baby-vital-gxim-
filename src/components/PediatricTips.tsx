@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 interface TipCategory {
-  icon: React.ComponentType;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   tips: string[];
 }
@@ -47,35 +47,39 @@ const PediatricTips = () => {
         {t('tips.title')}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map((category, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <Card className="glass-card hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <category.icon className="h-5 w-5 text-primary" />
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {category.tips.map((tip, tipIndex) => (
-                    <li key={tipIndex} className="text-sm text-muted-foreground">
-                      • {tip}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        {categories.map((category, index) => {
+          const Icon = category.icon;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="glass-card hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Icon className="h-5 w-5 text-primary" />
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {category.tips.map((tip, tipIndex) => (
+                      <li key={tipIndex} className="text-sm text-muted-foreground">
+                        • {tip}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default PediatricTips;
+
